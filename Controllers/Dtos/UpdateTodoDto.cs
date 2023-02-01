@@ -2,7 +2,7 @@
 
 namespace SleekFlow.TODOs.Controllers.Dtos
 {
-    public class UpdateToDoDto
+    public class UpdateTodoDto
     {
         /// <summary>
         /// The name of the task
@@ -32,7 +32,7 @@ namespace SleekFlow.TODOs.Controllers.Dtos
         /// </summary>
         public Priority Priority { get; set; }
 
-        public UpdateToDoDto(
+        public UpdateTodoDto(
             string name,
             string description,
             DateTime dueDate,

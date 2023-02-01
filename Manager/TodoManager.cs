@@ -6,18 +6,19 @@ using SleekFlow.TODOs.Result;
 
 namespace SleekFlow.TODOs.Manager
 {
-    public class ToDoManager : IToDoManager
+    public class TodoManager : ITodoManager
     {
-        public PagedResult<ToDoResult> GetAll(string? name, string? description, DateTime? dueDateAfter, DateTime? dueDateBefore, Status? status, Priority? priority, int page, int pageSize, string? sorting, bool isDesc)
+        private List<Todo> todoList = new List<Todo>();
+        public PagedResult<TodoResult> GetAll(string? name, string? description, DateTime? dueDateAfter, DateTime? dueDateBefore, Status? status, Priority? priority, int page, int pageSize, string? sorting, bool isDesc)
         {
             throw new NotImplementedException();
         }
 
-        public ToDoDetailResult GetById(Guid id)
+        public TodoDetailResult GetById(Guid id)
         {
             throw new NotImplementedException();
         }
-        public Guid Create(ToDo todo)
+        public Guid Create(Todo todo)
         {
             throw new NotImplementedException();
         }

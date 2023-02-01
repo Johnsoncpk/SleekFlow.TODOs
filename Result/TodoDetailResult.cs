@@ -2,7 +2,7 @@
 
 namespace SleekFlow.TODOs.Result
 {
-    public class ToDoDetailResult
+    public class TodoDetailResult
     {
         public string Name { get; set; }
 
@@ -14,7 +14,7 @@ namespace SleekFlow.TODOs.Result
 
         public Priority Priority { get; set; }
 
-        public ToDoDetailResult(
+        public TodoDetailResult(
             string name,
             string description,
             DateTime? dueDate,

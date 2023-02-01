@@ -3,7 +3,7 @@ using SleekFlow.TODOs.Library.Dto;
 
 namespace SleekFlow.TODOs.Controllers.Dtos
 {
-    public class GetAllToDoDto: SortingPagingDto
+    public class GetAllTodoDto: SortingPagingDto
     {
         /// <summary>
         /// The name of the task

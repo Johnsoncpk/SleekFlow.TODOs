@@ -11,19 +11,19 @@ namespace SleekFlow.Controllers.ToDos
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ToDoController : ControllerBase
+    public class TodoController : ControllerBase
     {
-        private readonly IToDoManager _todoManager;
-        public ToDoController(
-            IToDoManager todoManager)
+        private readonly ITodoManager _todoManager;
+        public TodoController(
+            ITodoManager todoManager)
         {
             _todoManager = todoManager;
         }
 
         [HttpGet]
-        public StandardResult<PagedResult<ToDoResult>> GetAll([FromQuery] GetAllToDoDto input)
+        public StandardResult<PagedResult<TodoResult>> GetAll([FromQuery] GetAllTodoDto input)
         {
-            PagedResult<ToDoResult> result = _todoManager
+            PagedResult<TodoResult> result = _todoManager
                 .GetAll(
                     input.Name,
                     input.Description,
@@ -36,18 +36,18 @@ namespace SleekFlow.Controllers.ToDos
                     input.Sorting,
                     input.IsDesc);
 
-            return new StandardResult<PagedResult<ToDoResult>>(
+            return new StandardResult<PagedResult<TodoResult>>(
                 result,
                 200,
                 null);
         }
 
         [HttpGet("{id}")]
-        public StandardResult<ToDoDetailResult> Get(Guid id)
+        public StandardResult<TodoDetailResult> Get(Guid id)
         {
-            ToDoDetailResult result = _todoManager.GetById(id);
+            TodoDetailResult result = _todoManager.GetById(id);
 
-            return new StandardResult<ToDoDetailResult>(
+            return new StandardResult<TodoDetailResult>(
                 result,
                 200,
                 null);
@@ -57,7 +57,7 @@ namespace SleekFlow.Controllers.ToDos
         public StandardResult<Guid> Create([FromBody] CreateTodoDto input)
         {
             Guid result = _todoManager
-                .Create(new ToDo(
+                .Create(new Todo(
                     input.Name,
                     input.Description,
                     input.DueDate,
@@ -71,7 +71,7 @@ namespace SleekFlow.Controllers.ToDos
         }
 
         [HttpPut("{id}")]
-        public StandardResult<Object> Update(Guid id, [FromBody] UpdateToDoDto input)
+        public StandardResult<Object> Update(Guid id, [FromBody] UpdateTodoDto input)
         {
             _todoManager.Update(
                 id,

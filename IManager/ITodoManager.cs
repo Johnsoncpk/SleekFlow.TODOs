@@ -5,9 +5,9 @@ using SleekFlow.TODOs.Result;
 
 namespace SleekFlow.TODOs.IManager
 {
-    public interface IToDoManager
+    public interface ITodoManager
     {
-        PagedResult<ToDoResult> GetAll(
+        PagedResult<TodoResult> GetAll(
             string? name,
             string? description,
             DateTime? dueDateAfter,
@@ -19,9 +19,9 @@ namespace SleekFlow.TODOs.IManager
             string? sorting,
             bool isDesc);
 
-        ToDoDetailResult GetById(Guid id);
+        TodoDetailResult GetById(Guid id);
 
-        Guid Create(ToDo todo);
+        Guid Create(Todo todo);
 
         void Update(
             Guid id,

@@ -2,7 +2,7 @@
 
 namespace SleekFlow.TODOs.Entity
 {
-    public class ToDo
+    public class Todo
     {
         public Guid Id { get; set; }
 
@@ -18,7 +18,7 @@ namespace SleekFlow.TODOs.Entity
 
         public bool IsDeleted { get; set; }
 
-        public ToDo(
+        public Todo(
             string name,
             string description,
             DateTime? dueDate,

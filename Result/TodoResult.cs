@@ -2,7 +2,7 @@
 
 namespace SleekFlow.TODOs.Result
 {
-    public class ToDoResult
+    public class TodoResult
     {
         public Guid Id { get; set; }
 
@@ -14,7 +14,7 @@ namespace SleekFlow.TODOs.Result
 
         public Priority Priority { get; set; }
 
-        public ToDoResult(
+        public TodoResult(
             Guid id,
             string name,
             DateTime? dueDate,
