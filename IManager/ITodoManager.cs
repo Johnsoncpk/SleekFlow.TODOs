@@ -19,11 +19,11 @@ namespace SleekFlow.TODOs.IManager
             string? sorting,
             bool isDesc);
 
-        TodoDetailResult GetById(Guid id);
+        TodoDetailResult? GetById(Guid id);
 
         Guid Create(Todo todo);
 
-        void Update(
+        bool Update(
             Guid id,
             string name,
             string description,
@@ -31,7 +31,7 @@ namespace SleekFlow.TODOs.IManager
             Status status,
             Priority priority);
 
-        void Delete(Guid id);
+        bool Delete(Guid id);
         
     }
 }

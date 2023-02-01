@@ -45,7 +45,15 @@ namespace SleekFlow.Controllers.ToDos
         [HttpGet("{id}")]
         public StandardResult<TodoDetailResult> Get(Guid id)
         {
-            TodoDetailResult result = _todoManager.GetById(id);
+            TodoDetailResult? result = _todoManager.GetById(id);
+
+            if(result == null)
+            {
+                return new StandardResult<TodoDetailResult>(
+                null,
+                404,
+                "Item not found with id: " + id);
+            }
 
             return new StandardResult<TodoDetailResult>(
                 result,
@@ -73,7 +81,7 @@ namespace SleekFlow.Controllers.ToDos
         [HttpPut("{id}")]
         public StandardResult<Object> Update(Guid id, [FromBody] UpdateTodoDto input)
         {
-            _todoManager.Update(
+            var isSuccess = _todoManager.Update(
                 id,
                 input.Name,
                 input.Description,
@@ -81,6 +89,14 @@ namespace SleekFlow.Controllers.ToDos
                 input.Status,
                 input.Priority
                 );
+
+            if (!isSuccess)
+            {
+                return new StandardResult<Object>(
+                null,
+                404,
+                "Item not found with id: " + id);
+            }
 
             return new StandardResult<Object>(
                 null,
@@ -91,7 +107,15 @@ namespace SleekFlow.Controllers.ToDos
         [HttpDelete("{id}")]
         public StandardResult<Object> Delete(Guid id)
         {
-            _todoManager.Delete(id);
+            var isSuccess = _todoManager.Delete(id);
+
+            if (!isSuccess)
+            {
+                return new StandardResult<Object>(
+                null,
+                400,
+                "Delete operation failed with id: " + id);
+            }
 
             return new StandardResult<Object>(
                 null,
